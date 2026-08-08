@@ -62,7 +62,16 @@ prompts/
   ex.tabletop/v1.md         tabletop design and after-action
 
 context/
-  county-fact-pack.md       local context pasted into every prompt — TEMPLATE, not yet filled in
+  county-fact-pack.md                         local context template pasted into every prompt
+  sanders-county-fact-pack.md                 Sanders County research and AI-paste draft
+  sanders-county-fact-pack.docx-source.md     Word-oriented office edition source
+
+artifacts/
+  Sanders-County-Fact-Pack-DRAFT.docx         generated office-ready review copy
+
+scripts/
+  prepare_sanders_docx_source.py              reformats the research draft for Word
+  build_fact_pack_docx.py                     generates the styled Word document
 
 tests/
   README.md                 golden fixtures, scoring, pass rules, regression policy
@@ -90,6 +99,23 @@ tests/
    is a draft until there is evidence behind it.
 
 Details and sequencing are in the [roadmap](docs/roadmap.md).
+
+---
+
+## Build the Sanders County Word draft
+
+The Word edition is generated from the research draft so operational facts remain traceable while
+the office copy can use shorter tables, consistent headings, an open-items checklist, document
+controls, active source links, and draft-control headers and footers.
+
+```bash
+python3 -m pip install -r requirements-docx.txt
+python3 scripts/prepare_sanders_docx_source.py
+python3 scripts/build_fact_pack_docx.py
+```
+
+Review `artifacts/Sanders-County-Fact-Pack-DRAFT.docx` in Microsoft Word before distribution.
+Regenerating the file overwrites the Word-oriented Markdown and DOCX outputs.
 
 ---
 
