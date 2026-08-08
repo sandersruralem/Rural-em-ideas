@@ -15,7 +15,7 @@ EM coordinator updating status between radio calls; fire/public works checking w
 
 ## Hypothesis
 
-If we provide a **phone-updatable status board that also prints as one sheet**, then partners can share a common picture without new accounts, measurable by successful tabletop updates in &lt;1 minute per change.
+If we provide a **phone-updatable status board that also prints as one sheet**, then partners can share a common picture without new accounts, measurable by successful tabletop updates in under 1 minute per change.
 
 ## In scope
 
