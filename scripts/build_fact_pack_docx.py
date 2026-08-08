@@ -330,7 +330,11 @@ def main() -> None:
     configure_document(document)
     add_body(document, SOURCE.read_text(encoding="utf-8").splitlines())
     document.save(OUTPUT)
-    print(f"Wrote {OUTPUT.relative_to(ROOT)}")
+    try:
+        display_path = OUTPUT.relative_to(ROOT)
+    except ValueError:
+        display_path = OUTPUT
+    print(f"Wrote {display_path}")
 
 
 if __name__ == "__main__":

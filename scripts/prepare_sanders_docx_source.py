@@ -239,7 +239,11 @@ def main() -> None:
     output.append("")
 
     OUTPUT.write_text("\n".join(output), encoding="utf-8")
-    print(f"Wrote {OUTPUT.relative_to(ROOT)}")
+    try:
+        display_path = OUTPUT.relative_to(ROOT)
+    except ValueError:
+        display_path = OUTPUT
+    print(f"Wrote {display_path}")
 
 
 if __name__ == "__main__":
