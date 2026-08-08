@@ -130,13 +130,21 @@ Run the golden set on each approved tool that is a candidate for the job, and re
 best. Results are expected to differ, and the library should record the preference rather than
 assume one tool is best at everything.
 
-| Prompt | Microsoft Copilot | Claude Pro | Gemini Pro | Preferred |
+| Prompt | Microsoft Copilot | Claude Pro | Gemini Pro | Preferred for Green |
 | --- | --- | --- | --- | --- |
 | `brief.morning` | not yet run | not yet run | not yet run | — |
 | `msg.pack` | not yet run | not yet run | not yet run | — |
 | `ex.tabletop` | not yet run | not yet run | not yet run | — |
 
 Fill this in as the golden sets are completed.
+
+**Copilot gets the full golden set, not a spot check.** Because it is the county enterprise account,
+it is the only tool cleared to receive Yellow data, which means it will end up handling the office's
+most sensitive routine work. Its performance needs to be as well evidenced as any other tool's, and
+knowing where it is weaker tells staff when to sanitize the input and use a different tool instead.
+
+All fixtures are Green, so testing can proceed on all three tools before the Copilot Yellow
+checklist is signed.
 
 ---
 

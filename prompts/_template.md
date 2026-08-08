@@ -6,8 +6,8 @@
 | **Version** | v1 |
 | **Status** | Draft — untested |
 | **Job** | One sentence describing the single job this prompt does |
-| **Recommended tool** | Microsoft Copilot / Claude Pro / Gemini Pro |
-| **Data level** | Green only |
+| **Recommended tool** | Microsoft Copilot / Claude Pro / Gemini Pro. Note which tool for Green inputs and which if any input is Yellow |
+| **Data level** | Green, or Yellow in Copilot once authorized. Never Red. |
 | **Reviewer** | Emergency Manager or equivalent |
 
 ---

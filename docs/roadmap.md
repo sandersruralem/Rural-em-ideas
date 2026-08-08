@@ -42,17 +42,29 @@ tuned against a fictional county tells you nothing about how it behaves on yours
 
 Runs in parallel with Phase 1. Does not block Green-only testing.
 
-- [ ] Determine whether the office uses Microsoft Copilot with a personal account or a work or
-      school account
-- [ ] County IT reviews retention, training, and access terms for all three tools
-- [ ] Complete the authorization table in [`docs/approved-tools.md`](approved-tools.md)
-- [ ] Confirm multifactor authentication is enabled on all three
-- [ ] Confirm county accounts are in use rather than personal ones
-- [ ] Decide whether Yellow data is authorized anywhere, and record the decision
+The account question is settled: Copilot is the county enterprise account on the Microsoft Entra ID
+tenant. That makes it the designated Yellow-capable tool, and what remains is confirmation rather
+than a procurement review.
 
-**Exit condition:** the authorization table is filled in, with a name and a date on each row.
+- [ ] Complete the Copilot Yellow-data confirmation checklist in
+      [`docs/approved-tools.md`](approved-tools.md), section 6
+- [ ] Run the permissions review on the Emergency Manager's and deputy's accounts, which is the
+      single highest-value item in that checklist
+- [ ] Record the web-grounding and Teams-summarization decisions so staff know the answer
+- [ ] Review public-records implications of retained Copilot interactions with the clerk or counsel
+- [ ] Confirm multifactor authentication is enabled on all three tools
+- [ ] Confirm staff are signed into Copilot with the county work account, not a personal one
+- [ ] Record that Claude Pro and Gemini Pro remain Green-only
 
-Until then, everything stays Green-only. That is a workable constraint, not a blocker.
+**Exit condition:** the Copilot checklist is signed and dated by County IT and the Emergency
+Manager, or a decision is recorded to keep Copilot Green-only for now.
+
+Until it is signed, everything stays Green-only. That is a workable constraint, not a blocker —
+the three pilot workflows run on public inputs by design.
+
+The permissions review deserves emphasis. Copilot can summarize anything the signed-in user can
+open, and in a county office that access is often broader than anyone intended. Copilot does not
+create that problem, but it will find it quickly.
 
 ---
 
@@ -63,8 +75,8 @@ Requires Phase 1.
 - [ ] Run all five `brief.morning` fixtures on Claude Pro
 - [ ] Run all four `msg.pack` fixtures on Claude Pro and on Gemini Pro
 - [ ] Run all three `ex.tabletop` fixtures on Claude Pro
-- [ ] Run at least the typical and negative fixtures of each prompt on Microsoft Copilot, for
-      comparison
+- [ ] Run the full golden set of all three prompts on Microsoft Copilot, since it is the tool that
+      will carry Yellow work and needs equal evidence behind it
 - [ ] File a completed scorecard for every run
 - [ ] Fill in the tool comparison table in [`tests/README.md`](../tests/README.md)
 - [ ] Revise and re-version any prompt that fails, then re-run the full set

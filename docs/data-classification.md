@@ -1,6 +1,6 @@
 # Data Classification for AI Use
 
-**Version:** 0.1 (draft)
+**Version:** 0.2 (draft)
 **Owner:** Emergency Manager
 **Review cycle:** Annually, or after any change in approved tools, county policy, or state/federal guidance
 
@@ -8,8 +8,11 @@ This document defines what information may and may not be entered into an AI too
 every prompt, attachment, screenshot, pasted note, and voice transcript submitted to any AI service,
 including requests that only ask the tool to summarize, translate, redact, or reformat.
 
-**Default posture:** Until County IT or legal counsel confirms otherwise in writing,
-**all approved tools are treated as Green-only.**
+**Default posture:** Microsoft Copilot runs on the county's enterprise Microsoft 365 account and is
+the designated tool for Yellow data once the confirmation checklist in
+[Approved Tools](approved-tools.md), section 6, is signed. Claude Pro and Gemini Pro are individual
+subscriptions with no county agreement behind them and are **Green-only**. Red data goes to none of
+them.
 
 ---
 
@@ -64,13 +67,15 @@ Examples:
 - Unconfirmed incident reports and early situational notes
 - Detailed resource and equipment inventories
 
-Yellow data may be submitted **only** when both conditions are met:
+Yellow data may be submitted **only to Microsoft Copilot on the county enterprise account**, and
+only once the confirmation checklist in [Approved Tools](approved-tools.md), section 6, has been
+completed and signed by County IT and the Emergency Manager.
 
-1. County IT or legal counsel has confirmed in writing that the specific tool **and the specific
-   account** provide acceptable retention, training, and access protections; and
-2. The Emergency Manager has approved that category of use.
+Yellow data is never submitted to Claude Pro or Gemini Pro. Those are individual subscriptions
+without a county agreement behind them, and no account setting changes that. If a job needs one of
+those tools on Yellow material, a person sanitizes it into Green form first.
 
-If either condition is unmet, anonymize the material into Green form or treat it as Red.
+Until the Copilot checklist is signed, Yellow is handled as Red: sanitize it or keep it out.
 
 ### Red — prohibited
 
@@ -111,6 +116,10 @@ If any answer creates doubt, do not submit it. Ask the Emergency Manager.
 
 **When in doubt, it is Red.**
 
+Two habits make the rest of this document mostly automatic. Before pasting, ask what level the
+material is. Then ask whether the tool in front of you is cleared for that level — Copilot for
+Yellow, any of the three for Green, none for Red.
+
 ---
 
 ## 4. Sanitizing to Green
@@ -148,7 +157,9 @@ If Red data is submitted to an AI tool, whether intentionally or not:
 1. Stop using that conversation. Do not continue the thread.
 2. Notify the Emergency Manager the same day.
 3. Notify County IT, and legal counsel if the material is regulated (HIPAA, CJIS, FERPA).
-4. Delete the conversation and account history if the tool allows it, and record that you did.
+4. Delete the conversation and account history if the tool allows it, and record that you did. In
+   Copilot, do not assume you can delete it yourself — interactions are retained under county
+   retention policy, so County IT determines what can be removed and what must be preserved.
 5. Record the event in `docs/governance/change-log.md` with date, tool, data class, and action taken.
 6. The Emergency Manager determines whether notification obligations apply.
 
@@ -163,5 +174,5 @@ The purpose of this process is correction, not punishment. Reporting promptly is
 | Already public? | Yes | No | No |
 | Identifies a person in a protected way? | No | No | Yes |
 | Could compromise security or an investigation? | No | No | Yes |
-| May be submitted to an approved tool? | Yes | Only with written county authorization | Never |
+| Where it may be submitted | Copilot, Claude Pro, or Gemini Pro | Copilot only, once its checklist is signed | Nowhere |
 | Requires Emergency Manager review of output? | Yes | Yes | N/A |

@@ -3,15 +3,18 @@
 Reusable, versioned prompts for county emergency management work. Each prompt does one job, states
 its required inputs, and produces a predictable structure that a person can review quickly.
 
-**Approved tools:** Microsoft Copilot, Claude Pro, Gemini Pro
+**Approved tools:** Microsoft Copilot (county enterprise), Claude Pro, Gemini Pro
 **Language:** English only
-**Data level:** Green only — see [Data Classification](../docs/data-classification.md)
+**Data routing:** Green to any approved tool. Yellow to Copilot only, once its
+[confirmation checklist](../docs/approved-tools.md#6-copilot-yellow-data-confirmation-checklist) is
+signed. Red to none. See [Data Classification](../docs/data-classification.md).
 
 ---
 
 ## How to use a prompt
 
-1. Confirm your inputs are Green.
+1. Classify your inputs, then pick the tool that is cleared for that level. Green inputs can go to
+   whichever tool the prompt recommends. If any input is Yellow, the run goes to Copilot.
 2. Open the prompt file and copy the **System block** into the tool's system, instruction, or first
    message field.
 3. Copy the **User block** and fill in every field. Do not leave a field implied.
@@ -26,11 +29,15 @@ version so the fix survives.
 
 ## Status of the library
 
-| ID | Job | Version | Status | Recommended tool |
-| --- | --- | --- | --- | --- |
-| [`brief.morning`](brief.morning/v1.md) | Morning hazard digest and action checklist | v1 | Draft — untested | Claude Pro |
-| [`msg.pack`](msg.pack/v1.md) | Public message pack across channels | v1 | Draft — untested | Claude Pro / Gemini Pro |
-| [`ex.tabletop`](ex.tabletop/v1.md) | Tabletop scenario, injects, and after-action | v1 | Draft — untested | Claude Pro |
+| ID | Job | Version | Status | Tool for Green inputs | If any input is Yellow |
+| --- | --- | --- | --- | --- | --- |
+| [`brief.morning`](brief.morning/v1.md) | Morning hazard digest and action checklist | v1 | Draft — untested | Claude Pro | Copilot |
+| [`msg.pack`](msg.pack/v1.md) | Public message pack across channels | v1 | Draft — untested | Claude Pro or Gemini Pro | Copilot |
+| [`ex.tabletop`](ex.tabletop/v1.md) | Tabletop scenario, injects, and after-action | v1 | Draft — untested | Claude Pro | Copilot |
+
+Yellow inputs turn up more often than expected. A morning brief that includes an unconfirmed report
+or internal staffing is Yellow. Unreleased draft messaging is Yellow. Raw exercise notes are usually
+Yellow. In each case the run moves to Copilot, or a person sanitizes the input into Green first.
 
 **Status meanings**
 
@@ -87,7 +94,7 @@ Every prompt file uses [`_template.md`](_template.md) and contains these section
   narrate how to write them.
 - **Every prompt refuses to invent.** Required line: unknown information is marked UNKNOWN and
   never filled in.
-- **Every prompt is Green-only** and says so in its system block.
+- **Every prompt refuses Red data** in its system block, on every tool, regardless of tenant.
 - **Every prompt reports what it needed and did not get.** The gap list is often the most valuable
   part of the output.
 - **Short beats long.** Long prompts drift. Cut anything the output schema already implies.

@@ -8,10 +8,10 @@ lowering accuracy or exposing protected information.
 
 | Setting | Value |
 | --- | --- |
-| Approved tools | Microsoft Copilot, Claude Pro, Gemini Pro |
+| Approved tools | Microsoft Copilot (county enterprise), Claude Pro, Gemini Pro |
 | Reviewer of record | Emergency Manager or equivalent |
 | Language | English only |
-| Default data level | Green only, until County IT authorizes otherwise |
+| Data routing | Green anywhere approved; Yellow to Copilot only, once its checklist is signed; Red nowhere |
 
 ---
 
@@ -21,6 +21,7 @@ lowering accuracy or exposing protected information.
 | --- | --- |
 | New to this | [The playbook](docs/ai-playbook.md), then the [quick start](docs/ai-playbook.md#appendix-a--one-page-quick-start) |
 | About to type something into an AI tool | [Data classification](docs/data-classification.md) |
+| Unsure which tool to use | [Data routing](docs/approved-tools.md#5-data-routing) |
 | About to release an AI-assisted product | [Review checklist](docs/review-checklist.md) |
 | Doing a specific job | [Job playbooks](docs/job-playbooks/) |
 | Looking for a prompt | [Prompt index](prompts/README.md) |
@@ -31,8 +32,9 @@ lowering accuracy or exposing protected information.
 
 ## The three rules
 
-1. **Green data only.** Public information in, or nothing. When in doubt, it is Red and it does not
-   go in. See [data classification](docs/data-classification.md).
+1. **Match the data to the tool.** Green goes to any approved tool. Yellow goes to Microsoft Copilot
+   only, because it runs on the county enterprise tenant. Red goes nowhere. When in doubt, it is
+   Red. See [data classification](docs/data-classification.md).
 2. **Everything is a draft.** The Emergency Manager reviews every operational and public-facing
    product before it goes anywhere.
 3. **Official systems remain the source of truth.** The National Weather Service, dispatch, and the

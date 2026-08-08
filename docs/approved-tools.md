@@ -1,142 +1,224 @@
 # Approved Tools
 
-**Version:** 0.1 (draft)
+**Version:** 0.2 (draft)
 **Owner:** Emergency Manager
 **Review cycle:** Quarterly, or whenever a vendor changes its terms
 
-Three tools are in scope for the pilot. No other AI service is approved for county work under this
-playbook.
+Three tools are in scope. No other AI service is approved for county work under this playbook.
 
-| Tool | Plan | Primary use in this office | Default data level |
+| Tool | Account | Primary use in this office | Highest data level |
 | --- | --- | --- | --- |
-| Microsoft Copilot | Paid | Drafting inside Microsoft 365 documents and email; summarizing meetings | Green |
-| Claude Pro | Paid | Long-form drafting, plan and annex work, structured outputs, document analysis | Green |
-| Gemini Pro | Paid | Research-style synthesis, multimodal review, Google-ecosystem drafting | Green |
+| Microsoft Copilot | County enterprise (Microsoft Entra ID) | Drafting in Microsoft 365, meeting summaries, internal working documents | Yellow, once the confirmation checklist is complete |
+| Claude Pro | Individual subscription | Long-form drafting, plans and annexes, structured outputs | Green |
+| Gemini Pro | Individual subscription | Research-style synthesis, multimodal review | Green |
 
-**All three are Green-only until County IT confirms otherwise in writing.** See
+**Red data is never submitted to any of the three.** See
 [Data Classification](data-classification.md).
 
 ---
 
-## 1. Why the default is Green-only
+## 1. Why the account matters more than the brand
 
-The protections a tool provides depend on the account it is used with, not on the brand name or the
-subscription price. Consumer and enterprise versions of the same product can differ substantially in
-how conversations are retained, whether they may be reviewed by humans, and whether they may be used
-to improve models.
+The protections a tool provides come from the agreement behind the account, not from the product
+name or the subscription price. The same vendor's consumer and enterprise offerings differ
+substantially in retention, human review, model training, and administrative control.
 
-Vendor terms also change. A determination made once is not permanent, which is why this document is
-reviewed quarterly and why the authorization column below must be filled in locally rather than
-assumed.
+That distinction is the reason this office can use one of these three tools differently from the
+other two.
 
 ---
 
-## 2. Microsoft Copilot
+## 2. Microsoft Copilot — county enterprise account
 
-**Important distinction.** "Copilot" refers to several different products:
+This office uses Microsoft Copilot signed in with the **county's Microsoft Entra ID work account**,
+inside the county's Microsoft 365 tenant. That places it under Microsoft's enterprise data
+protection commitments, which generally means:
 
-- **Microsoft Copilot (consumer)** — signed in with a personal Microsoft account
-- **Microsoft 365 Copilot** — licensed within a Microsoft 365 tenant, signed in with a work or
-  school account (Microsoft Entra ID), with access to tenant data through Microsoft Graph
-- **GitHub Copilot** — a code-completion product, out of scope for this playbook
+- Prompts and responses are not used to train Microsoft's foundation models
+- Data stays within the tenant's service boundary and is covered by the county's Microsoft agreement
+- Existing Microsoft 365 permissions and sensitivity labels are honored
+- Interactions are subject to county administrative control, audit, and retention policy
 
-This office uses **Microsoft Copilot**. Before any use beyond Green data, County IT must confirm
-which of the first two the office is actually signed into, because the data handling differs. Work
-or school account sign-in generally carries commercial data protection terms that a personal account
-does not.
+This is a materially stronger position than a personal-account tool, and it is why Copilot is the
+designated tool for Yellow data once the checklist in section 5 is complete.
 
-Strengths for this office:
+It is not a reason to relax about Red data. See section 2.3.
 
-- Works where documents already live, which reduces copy-paste and therefore reduces exposure risk
-- Useful for meeting summaries, email drafting, and document rewriting
-- Familiar interface for staff and elected officials already using Microsoft 365
+### 2.1 Strengths for this office
 
-Cautions:
+- Works where county documents already live, which reduces copy-paste and therefore reduces the
+  chance of pasting something that should not leave a controlled system
+- Meeting summarization for EOC briefings, LEPC meetings, and commission sessions
+- Familiar to staff and elected officials already using Microsoft 365
+- Governed centrally: County IT can audit, retain, and restrict without depending on individual
+  users configuring anything correctly
 
-- Copilot can reach into files the signed-in user can already access. Verify that the user's
-  permissions do not expose Yellow or Red material into a summary.
-- Confirm whether Copilot output is retained in the tenant and whether it is discoverable under
-  records law.
+### 2.2 Cautions specific to an enterprise deployment
 
-Best fits: `sop.jobaid`, meeting minutes, email and memo drafting, document cleanup.
+These are the risks that come with the enterprise version, not the ones it removes.
+
+**Oversharing through inherited permissions.** Copilot can reach anything the signed-in user can
+already open. In a county office one person often has broad access across shared drives — personnel
+files, sheriff's office folders, health department material. Copilot will happily summarize a
+poorly-permissioned folder into a tidy document that then gets emailed to a wider group. The tool is
+not the failure; the permissions are, and Copilot makes existing permission problems visible fast.
+A permissions review of the Emergency Manager's account is part of the checklist below.
+
+**Records and discovery.** Copilot interactions are retained within the tenant and are subject to
+county retention policy, audit, eDiscovery, and potentially state public-records law. Write every
+prompt as though it may be read later by someone who was not in the room.
+
+**Web grounding.** If Copilot is configured to search the web for grounding, some content leaves the
+tenant boundary to service that search. Microsoft's position is that such queries are disassociated
+from user and tenant identity, but a web-grounded prompt is more exposed than a tenant-only one.
+County IT should record whether web grounding is enabled, and staff should assume it is until told
+otherwise.
+
+**Meeting summarization.** Copilot in Teams can transcribe and summarize. A meeting where someone
+mentions a resident by name produces a record of that. Decide before the meeting whether it is
+being summarized, and say so out loud to the participants.
+
+**Agents and connectors.** Any agent, plugin, or connector added to the tenant may extend where data
+travels. New ones are treated as new tools and go through section 7.
+
+### 2.3 Red data is still prohibited
+
+An enterprise tenant does not make protected categories permissible.
+
+- **HIPAA** material requires that the county's business associate agreement actually cover the
+  service in question, and that the use fits the agreement. Confirm with counsel, do not assume.
+- **CJIS** material carries its own compliance requirements. Raw dispatch, records, and
+  investigative content stays out.
+- **Personal information about residents** stays out under this playbook regardless of tenant
+  protections, because the operational benefit is small and the consequence of being wrong is not.
+
+If the county later wants to reclassify a specific Red category for Copilot, that is a decision for
+the Emergency Manager with legal counsel, documented in the change log, with the playbook version
+bumped. It is not a judgment call made at a keyboard on a busy morning. Version 1.0 keeps Red
+prohibited across all three tools.
 
 ---
 
 ## 3. Claude Pro
 
+An individual subscription without a county enterprise agreement behind it. **Green only.**
+
 Strengths for this office:
 
-- Strong at long, structured documents such as annexes, after-action reports, and exercise packages
-- Follows explicit output schemas reliably, which matters for the prompt library
+- Strong at long, structured documents such as annexes, exercise packages, and after-action reports
+- Follows explicit output schemas reliably, which is what the prompt library depends on
 - Handles large pasted source material in a single pass
-- Comparatively conservative about stating uncertainty, which suits emergency management drafting
+- Comparatively willing to state uncertainty, which suits emergency management drafting
 
 Cautions:
 
-- A consumer subscription is not an enterprise agreement. Confirm current retention and
-  model-training settings for the account in use, and confirm they can be administered centrally.
-- Verify whether account history can be disabled or purged if Red data is ever submitted in error.
+- A consumer subscription is not an enterprise agreement. Retention and training settings are
+  configured per account and are not centrally administered by County IT.
+- Verify that conversation history can be disabled or purged if something is submitted in error.
+- Because it is Green-only, sanitize before prompting rather than after.
 
-Best fits: `brief.morning`, `ex.tabletop`, `ex.aar`, `grant.narrative`, `ics.timeline`.
+Best fits: `brief.morning`, `ex.tabletop`, `ex.aar`, `grant.narrative` — all working from public
+inputs.
 
 ---
 
 ## 4. Gemini Pro
 
+An individual subscription without a county enterprise agreement behind it. **Green only.**
+
 Strengths for this office:
 
 - Good at synthesizing several public sources into one readable summary
 - Handles images and documents, useful for reading scanned plans or photographed whiteboards
-- Integrates with Google Workspace if the county uses it
 
 Cautions:
 
 - Consumer Google AI plans may retain conversations and, depending on activity settings, allow human
-  review. Confirm the current settings for the account in use.
-- Google's own guidance advises against entering confidential information into consumer products.
-  Treat that as binding here.
+  review. Confirm the settings on the account in use.
+- Google's own guidance advises against entering confidential information into its consumer
+  products. Treat that as binding here.
 
-Best fits: `msg.pack` variants, public-source research, reading scanned or photographed material.
+Best fits: `msg.pack` drafting from approved public facts, public-source research, reading scanned
+material.
 
 ---
 
-## 5. Local authorization record
+## 5. Data routing
 
-County IT or legal counsel completes this table. Until a row says "Yes," that tool remains
-Green-only regardless of what its vendor documentation claims.
+Which tool for which data. This is the table to remember.
 
-| Tool | Account type in use | Yellow data authorized? | Authorized by | Date | Notes |
+| Data level | Microsoft Copilot (county enterprise) | Claude Pro | Gemini Pro |
+| --- | --- | --- | --- |
+| **Green** | Yes | Yes | Yes |
+| **Yellow** | Yes, once section 6 is complete | No | No |
+| **Red** | Never | Never | Never |
+
+Practical effect: if the work involves draft plans, internal staffing, unconfirmed reports,
+preliminary damage figures, vendor pricing, or anything else not yet public, it goes to Copilot.
+Everything else can go wherever the prompt performs best.
+
+If a job needs Claude's or Gemini's output quality on material that is Yellow, sanitize it into
+Green form first. Do not route Yellow to a Green-only tool because the output reads better.
+
+---
+
+## 6. Copilot Yellow-data confirmation checklist
+
+Copilot's enterprise footing makes this a confirmation rather than a full procurement review. It
+still has to be completed and signed before Yellow data is submitted.
+
+- [ ] License in use confirmed, and confirmed to carry enterprise data protection
+- [ ] Confirmed that prompts and responses are not used to train foundation models under this
+      license
+- [ ] Retention policy for Copilot interactions set, documented, and known to staff
+- [ ] Audit logging enabled and someone named as responsible for reviewing it
+- [ ] Permissions review completed for the Emergency Manager's and deputy's accounts, with
+      overbroad access to personnel, health, and law-enforcement material removed
+- [ ] Sensitivity labeling in use for any Yellow material Copilot can reach, or a documented
+      decision not to
+- [ ] Web grounding configuration recorded, enabled or disabled
+- [ ] Teams meeting summarization expectations recorded, including which meetings are never
+      summarized
+- [ ] Public-records implications reviewed with the county clerk or counsel
+- [ ] Agents, plugins, and connectors inventoried
+
+| Field | Value |
+| --- | --- |
+| Completed by (County IT) | |
+| Date | |
+| Approved by (Emergency Manager) | |
+| Date | |
+| Yellow data authorized for Copilot? | Not yet |
+
+Until that last row says yes with a date beside it, **Copilot remains Green-only in practice**, the
+same as the other two.
+
+## 7. Claude Pro and Gemini Pro authorization record
+
+Both remain Green-only. Raising either would require a county enterprise agreement, not a settings
+change.
+
+| Tool | Account type | Yellow authorized? | Reviewed by | Date | Notes |
 | --- | --- | --- | --- | --- | --- |
-| Microsoft Copilot | _(consumer / work-school)_ | No | | | Pending IT review |
-| Claude Pro | _(individual / team)_ | No | | | Pending IT review |
-| Gemini Pro | _(consumer / Workspace)_ | No | | | Pending IT review |
-
-Questions to put to IT or the vendor:
-
-1. Are prompts and outputs used to train or improve models? Can that be turned off, and by whom?
-2. How long is conversation history retained, and who can delete it?
-3. Can county administrators audit or export usage?
-4. Does the agreement include commercial or enterprise data protection terms?
-5. Is county data processed or stored outside the United States?
-6. Does any existing county contract or cyber-insurance policy restrict this use?
+| Claude Pro | Individual | No | | | Green-only; no county agreement in place |
+| Gemini Pro | Individual | No | | | Green-only; no county agreement in place |
 
 ---
 
-## 6. Account and access rules
+## 8. Account and access rules
 
 - Use county-provided accounts. Personal accounts are not used for county work.
 - Do not share logins. Each user signs in individually so activity is attributable.
 - Enable multifactor authentication on all three tools.
-- When staff leave, County IT deactivates their access as part of offboarding.
-- Do not install third-party browser extensions or plugins that relay county content to other
-  services.
+- For Copilot, confirm you are signed in with the county work account, not a personal Microsoft
+  account. The interface looks similar. The protections are not.
+- When staff leave, County IT deactivates access as part of offboarding.
+- Do not install browser extensions or plugins that relay county content to other services.
 
----
-
-## 7. Requesting a new tool
+## 9. Requesting a new tool
 
 1. Write down the job to be done and why the approved tools cannot do it.
 2. Send the vendor's terms and privacy documentation to County IT for review.
 3. Obtain the Emergency Manager's approval.
-4. Test with Green data only, using the golden-set protocol in [`tests/README.md`](../tests/README.md).
-5. Add the tool to this document with a version bump and a change-log entry.
+4. Test with Green data only, using the protocol in [`tests/README.md`](../tests/README.md).
+5. Add the tool here with a version bump and a change-log entry.

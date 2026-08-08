@@ -1,9 +1,9 @@
 # County Emergency Management AI Playbook
 
-**Version:** 0.1 (draft — pilot)
+**Version:** 0.2 (draft — pilot)
 **Owner:** Emergency Manager
 **Reviewer of record:** Emergency Manager or equivalent
-**Approved tools:** Microsoft Copilot, Claude Pro, Gemini Pro
+**Approved tools:** Microsoft Copilot (county enterprise), Claude Pro, Gemini Pro
 **Language:** English only
 **Status:** Pilot. Not yet adopted as county policy.
 
@@ -26,8 +26,8 @@ accountable for everything that leaves this office.
 3. **Official systems remain the source of truth.** The National Weather Service, the state
    emergency management system, dispatch, and the county website are authoritative. AI summarizes
    and packages; it does not decide and it does not originate facts.
-4. **Green data by default.** See [Data Classification](data-classification.md). When in doubt, it
-   is Red and it does not go in.
+4. **Match the data to the tool.** Green goes anywhere approved. Yellow goes to Copilot only. Red
+   goes nowhere. See [Data Classification](data-classification.md). When in doubt, it is Red.
 5. **Unknown beats invented.** A draft that says UNKNOWN is useful. A draft that invents a road
    closure is dangerous.
 6. **Reusable beats clever.** A prompt that works the same way every Tuesday is worth more than a
@@ -63,12 +63,24 @@ is performed deliberately, against the checklist, on a separate pass from the dr
 
 ## 5. Approved tools
 
-Microsoft Copilot, Claude Pro, and Gemini Pro. All three are Green-only until County IT confirms
-otherwise in writing. Tool-by-tool strengths, cautions, and the local authorization table are in
-[Approved Tools](approved-tools.md).
+Three tools, and they are not interchangeable, because the agreement behind each account differs.
 
-No other AI service is used for county work, including free tools, browser extensions, and
-AI features embedded in unrelated software.
+| Tool | Account | Highest data level | Typical use here |
+| --- | --- | --- | --- |
+| Microsoft Copilot | County enterprise, Microsoft Entra ID | Yellow, once its checklist is signed | Anything internal or not yet public; work inside Microsoft 365; meeting summaries |
+| Claude Pro | Individual subscription | Green | Long structured drafting: briefs, exercises, after-action reports |
+| Gemini Pro | Individual subscription | Green | Public-source synthesis, reading scanned documents |
+
+Copilot runs on the county's enterprise Microsoft 365 tenant, which is why it is the one tool that
+can carry Yellow data. That advantage comes with its own risks — it can reach anything the
+signed-in user can open, and its interactions are retained and discoverable. Both are covered in
+[Approved Tools](approved-tools.md), section 2.2.
+
+Claude Pro and Gemini Pro are individual subscriptions with no county agreement behind them. They
+stay Green-only. Sanitize before prompting, not after.
+
+No other AI service is used for county work, including free tools, browser extensions, and AI
+features embedded in unrelated software.
 
 ## 6. The core workflow
 
@@ -110,11 +122,12 @@ pass the golden-set tests.
 
 The short version:
 
-- **Green** — public or built to be public. Permitted.
-- **Yellow** — internal working material. Only with written county authorization for that specific
-  tool and account.
-- **Red** — persons, protected records, security details, credentials. Never, including for
-  redaction or summarizing.
+- **Green** — public or built to be public. Any approved tool.
+- **Yellow** — internal working material such as draft plans, staffing, unconfirmed reports, and
+  preliminary estimates. Microsoft Copilot only, once its confirmation checklist is signed. Never
+  Claude Pro or Gemini Pro.
+- **Red** — persons, protected records, security details, credentials. No tool, ever, including for
+  redaction or summarizing. The enterprise tenant does not change this.
 
 Full definitions, the five-question decision rule, sanitizing patterns, and the incident procedure
 are in [Data Classification](data-classification.md). Read that document before first use.
@@ -145,7 +158,9 @@ These are the failures this office should expect, watch for, and catch in review
 | Averaging to generic | Advice that would fit any county in the country | Reject drafts with no county-specific action |
 | Quiet drift | Someone edits a prompt and results change without anyone noticing | Version prompts; re-run golden tests before replacing a version |
 | Over-trust | Output released because it reads well | Mandatory checklist; reviewer signs |
-| Data leak | Protected detail pasted in to "save time" | Green-only default; sanitize before prompting |
+| Data leak | Protected detail pasted in to "save time" | Classify before pasting; sanitize before prompting |
+| Wrong tool for the data | Yellow material pasted into Claude or Gemini because the output reads better | Check the routing table before pasting, not after |
+| Copilot oversharing | A summary quietly pulls in personnel or law-enforcement files the user can open | Permissions review before Yellow use; read what Copilot cited |
 
 ## 11. Records
 
@@ -154,7 +169,9 @@ These are the failures this office should expect, watch for, and catch in review
 - Each run is logged in [`tests/run-log.md`](../tests/run-log.md): date, prompt ID and version, tool,
   minutes spent editing, errors caught, and whether the prompt should be kept or changed.
 - Prompts, fixtures, and scorecards live in this repository under version control.
-- Assume prompts and outputs may be subject to public-records requests. Write accordingly.
+- Assume prompts and outputs may be subject to public-records requests. Write accordingly. Copilot
+  interactions in particular are retained in the county tenant under county retention policy and are
+  discoverable, so an individual user cannot make one disappear.
 
 ## 12. Pilot and success criteria
 
@@ -189,7 +206,8 @@ Maintained in [`docs/governance/change-log.md`](governance/change-log.md).
 
 ## Appendix A — One-page quick start
 
-1. Confirm your input is **Green**. If unsure, stop and ask.
+1. Classify your input. **Green** goes to any approved tool. **Yellow** goes to Copilot only, and
+   only once its checklist is signed. **Red** stops here — sanitize it or leave it out.
 2. Open the [prompt index](../prompts/README.md) and pick the prompt by ID.
 3. Paste the [county fact pack](../context/county-fact-pack.md) plus your inputs.
 4. Generate the draft.
