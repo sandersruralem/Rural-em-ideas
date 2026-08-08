@@ -62,7 +62,8 @@ prompts/
   ex.tabletop/v1.md         tabletop design and after-action
 
 context/
-  county-fact-pack.md       local context pasted into every prompt — TEMPLATE, not yet filled in
+  county-fact-pack.md              local context template pasted into every prompt
+  sanders-county-fact-pack.md      Sanders County, MT research draft (verify before live use)
 
 tests/
   README.md                 golden fixtures, scoring, pass rules, regression policy
