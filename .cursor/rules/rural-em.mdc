@@ -1,0 +1,17 @@
+# Cursor rules for Rural EM Ideas
+
+## Tone and assumptions
+- Write for rural/county emergency management: small staff, large geography, limited IT.
+- Prefer plain language. Avoid vendor jargon and metro EM assumptions.
+- Prefer printable, phone-friendly, offline-tolerant, CSV-friendly designs.
+
+## Scope discipline
+- Do not expand spikes into full EOC platforms.
+- Do not invent legal compliance claims.
+- Use synthetic data only for people/places that could be sensitive.
+
+## Repo conventions
+- New friction notes → `ideas/inbox/`
+- Ready experiments → `ideas/spikes/`
+- Promoted builds → `ideas/prototypes/`
+- Follow templates when creating new briefs.
