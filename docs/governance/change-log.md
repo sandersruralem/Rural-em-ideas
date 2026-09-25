@@ -15,6 +15,8 @@ reading the diff.
 | 2026-08-08 | Playbook | 0.2 | Replaced the Green-only default with per-tool data routing. Added Copilot oversharing and wrong-tool-for-the-data failure modes | Follows from the enterprise account determination | Playbook owner |
 | 2026-08-08 | Prompt library | — | Metadata only: recorded tool routing on all three v1 prompts and the template. No system block, user block, or output schema changed, so no version bumps | Keep routing visible at the point of use | Playbook owner |
 | 2026-08-08 | Roadmap and testing protocol | — | Phase 2 reduced from procurement review to confirmation, with the permissions review called out. Copilot promoted to a full golden set rather than a spot check | Copilot will carry the office's Yellow work and needs equal evidence | Playbook owner |
+| 2026-08-08 | County fact pack | 0.1 draft | Added `context/sanders-county-fact-pack.md`: research-filled Sanders County, Montana copy of the template with Green public sources and a full sources list. Template left unchanged pending EM verification | Start Phase 1 local-context work for Sanders County | Cloud agent |
+| 2026-08-08 | County fact pack office edition | 0.1 draft | Added a Word-oriented Markdown edition, reproducible DOCX generator, styled office-review document, open-items checklist, document controls, and source appendix | Provide a clean review copy without replacing the research / AI-paste draft | Cloud agent |
 
 ---
 
